@@ -31,8 +31,8 @@ int main(int argc, char** argv)
 	cap.read(imgTmp);
 
 	//Create a black image with the size as the camera output
-	Mat imgLines = Mat::zeros(960, 1280, CV_8UC3);
-	Mat board = Mat::zeros(960,1280, CV_8UC3);
+	Mat imgLines = Mat::zeros(imgTmp.size(), CV_8UC3);
+	Mat board = Mat::zeros(imgTmp.size(), CV_8UC3);
 
 	cout << imgTmp.size();
 
@@ -89,12 +89,12 @@ int main(int argc, char** argv)
 			if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
 			{
 				posX = 640 - posX;
-				line(imgLines,Point(posX,posY),Point(iLastX,iLastY),Scalar(0,0,255),2);
+				line(imgLines,Point(posX,posY),Point(iLastX,iLastY),Scalar(0,0,255),3);
 			}
 			if (iLastXb >= 0 && iLastYb >= 0 && posBlueX >= 0 && posBlueY >= 0)
 			{
 				posBlueX = 640 - posBlueX;
-				line(imgLines, Point(posBlueX, posBlueY), Point(iLastXb, iLastYb), Scalar(255,0,0), 2);
+				line(imgLines, Point(posBlueX, posBlueY), Point(iLastXb, iLastYb), Scalar(255,0,0), 3);
 			}
 			iLastX = posX;
 			iLastY = posY;
