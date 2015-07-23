@@ -86,21 +86,27 @@ int main(int argc, char** argv)
 			int posBlueX = c1 / area;
 			int posBlueY = c2 / area;
 
-			if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
+			if (dArea>20000 &&(iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0))
 			{
-				posX = 640 - posX;
+				//posX = 640 - posX;
 				line(imgLines,Point(posX,posY),Point(iLastX,iLastY),Scalar(0,0,255),3);
 			}
-			if (iLastXb >= 0 && iLastYb >= 0 && posBlueX >= 0 && posBlueY >= 0)
+			if (area>20000 &&(iLastXb >= 0 && iLastYb >= 0 && posBlueX >= 0 && posBlueY >= 0))
 			{
-				posBlueX = 640 - posBlueX;
+				//posBlueX = 640 - posBlueX;
 				line(imgLines, Point(posBlueX, posBlueY), Point(iLastXb, iLastYb), Scalar(255,0,0), 3);
 			}
 			iLastX = posX;
 			iLastY = posY;
 			iLastXb = posBlueX;
 			iLastYb = posBlueY;
+		}
+		else{
+			iLastX = -1;
+			iLastY = -1;
 
+			iLastXb = -1;
+			iLastYb = -1;
 		}
 
 		//imshow("Thresholded Image", imgThresholded); //show the thresholded image
