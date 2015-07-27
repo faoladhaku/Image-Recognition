@@ -1,12 +1,13 @@
 #include <iostream>
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+#include <stdio.h>
 
 #define bluemin Scalar(80,96,101)
-#define bluemax Scalar(125,255,255)
+#define bluemax Scalar(125,250,250)
 
 #define redmin Scalar(166,154,100)
-#define redmax Scalar(179,255,255)
+#define redmax Scalar(179,250,250)
 
 using namespace cv;
 using namespace std;
@@ -85,15 +86,14 @@ int main(int argc, char** argv)
 			int posY = dM01 / dArea;
 			int posBlueX = c1 / area;
 			int posBlueY = c2 / area;
-
+			posX = 640 - posX;
+			posBlueX = 640 - posBlueX;
 			if (dArea>20000 &&(iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0))
 			{
-				//posX = 640 - posX;
 				line(imgLines,Point(posX,posY),Point(iLastX,iLastY),Scalar(0,0,255),3);
 			}
 			if (area>20000 &&(iLastXb >= 0 && iLastYb >= 0 && posBlueX >= 0 && posBlueY >= 0))
 			{
-				//posBlueX = 640 - posBlueX;
 				line(imgLines, Point(posBlueX, posBlueY), Point(iLastXb, iLastYb), Scalar(255,0,0), 3);
 			}
 			iLastX = posX;
